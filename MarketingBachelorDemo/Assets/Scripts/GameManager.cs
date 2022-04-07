@@ -20,10 +20,14 @@ public class GameManager : MonoBehaviour
     
     [SerializeField] private GameObject playerCombatPosition;
     [SerializeField] private Vector3 playerOriginalPosition;
+    [SerializeField] private bool playerHasItem;
 
     public Action<GameStatus> OnGameStatusChange;
+    public Action OpenDoor;
 
-    public GameStatus CurrentStatus
+    public bool PlayerHasItem => playerHasItem;
+
+public GameStatus CurrentStatus
     {
         get => currentStatus;
         
@@ -75,5 +79,10 @@ public class GameManager : MonoBehaviour
     private void GameOver()
     {
         SceneManager.LoadScene(3);
+    }
+
+    public void ObtainItem()
+    {
+        playerHasItem = true;
     }
 }

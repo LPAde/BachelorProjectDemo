@@ -1,23 +1,26 @@
-using System;
 using System.Collections.Generic;
 using UI;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class MapNPC : MonoBehaviour
 {
     [SerializeField] private string npcName;
-    [SerializeField] private List<string> dialog;
+    [SerializeField] private List<string> noItemDialog;
+    [SerializeField] private List<string> itemDialog;
     [SerializeField] private bool canTalk;
 
     private void Update()
     {
-        if (canTalk)
+        if (!canTalk) 
+            return;
+        
+        if (Input.GetKeyDown(KeyCode.Return) && GameManager.Instance.CurrentStatus == GameStatus.Idle)
         {
-            if (Input.GetKeyDown(KeyCode.Return) && GameManager.Instance.CurrentStatus == GameStatus.Idle)
-            {
-                DialogManager.Instance.StartDialog(npcName, dialog);
-            }
+            DialogManager.Instance.StartDialog(npcName,
+                GameManager.Instance.PlayerHasItem ? itemDialog : noItemDialog);
+            
+            if(GameManager.Instance.PlayerHasItem)
+                GameManager.Instance.OpenDoor.Invoke();
         }
     }
 
