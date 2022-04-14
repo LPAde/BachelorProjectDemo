@@ -18,6 +18,7 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/MapNPC.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/MapItem.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="27U5gxj8KuyrreFgt2z8WwIIvDP" />
@@ -63,7 +64,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1649361939082</updated>
-      <workItem from="1649361941744" duration="1132000" />
+      <workItem from="1649361941744" duration="1675000" />
+      <workItem from="1649941295633" duration="823000" />
     </task>
     <servers />
   </component>

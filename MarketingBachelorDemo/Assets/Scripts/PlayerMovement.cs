@@ -5,10 +5,17 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private Vector3 movementVector;
+    [SerializeField] private Rigidbody rb;
+    [SerializeField] private bool isAirborn;
 
     private void Start()
     {
         movementVector = transform.position;
+    }
+
+    private void Update()
+    {
+        CheckInputs();
     }
 
     private void FixedUpdate()
@@ -16,6 +23,11 @@ public class PlayerMovement : MonoBehaviour
         if(GameManager.Instance.CurrentStatus != GameStatus.Idle)
             return;
         
+        Move();
+    }
+    
+    private void Move()
+    {
         movementVector = Vector3.zero;
         
         float horizontal = Input.GetAxis("Horizontal");
@@ -28,5 +40,28 @@ public class PlayerMovement : MonoBehaviour
         position = Vector3.Lerp(position, position + movementVector, speed * Time.deltaTime);
         
         transform.position = position;
+    }
+
+    private void CheckInputs()
+    {
+        if (isAirborn && Input.GetKeyDown(KeyCode.Space))
+        {
+            rb.AddForce(new Vector3(0, 200,0));
+        }
+    }
+
+    private void OnCollisionExit(Collision other)
+    {
+        isAirborn = false;
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        isAirborn = true;
+    }
+
+    private void OnCollisionStay(Collision other)
+    {
+        isAirborn = true;
     }
 }
