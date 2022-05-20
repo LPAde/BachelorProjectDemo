@@ -67,7 +67,7 @@ CBUFFER_START(UnityPerMaterial)
 		uniform half _Cutout;
 		uniform half _AlphaBaseCutout;
 		uniform half _UseSecondaryCutout;
-		
+
 		uniform half _Glow_Edge_Width;
 		uniform half4 _Glow_Color;
 
@@ -241,6 +241,7 @@ CBUFFER_START(UnityPerMaterial)
 
 
 	//== Others
+
 		uniform half4 _SSAOColor;
 
 		uniform half _ReduSha;

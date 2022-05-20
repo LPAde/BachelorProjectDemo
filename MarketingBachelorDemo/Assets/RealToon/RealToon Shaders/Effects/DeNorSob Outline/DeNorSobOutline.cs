@@ -4,7 +4,6 @@ using UnityEngine.Rendering.Universal;
 
 namespace RealToon.Effects
 {
-
     public class DeNorSobOutline : ScriptableRendererFeature
     {
         class DeNorSobOutlinePass : ScriptableRenderPass

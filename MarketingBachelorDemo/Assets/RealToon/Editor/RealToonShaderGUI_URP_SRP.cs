@@ -27,7 +27,9 @@ namespace RealToon.GUIInspector
         static bool ShowShadow;
         static bool ShowLighting;
         static bool ShowReflection;
+        static bool ShowFReflection;
         static bool ShowRimLight;
+        static bool ShowDepth;
         static bool ShowSeeThrough;
         //static bool ShowTessellation; In Progress
         static bool ShowDisableEnable;
@@ -46,25 +48,25 @@ namespace RealToon.GUIInspector
 
         #region Variables
 
-        string shader_type = "Default";
-        string srp_mode = "URP";
-        bool del_skw = false;
-        static bool aruskw = false;
+string shader_type = "Default";
+string srp_mode = "URP";
+bool del_skw = false;
+static bool aruskw = false;
 
-        static bool UseSSOL = true;
-        static string UseSSOLStat = "Use Screen Space Outline";
-        static string OLType = "Traditional";
+static bool UseSSOL = true;
+static string UseSSOLStat = "Use Screen Space Outline";
+static string OLType = "Traditional";
 
-        static bool remoout = true;
-        static string remooutstat = "Remove Outline";
+static bool remoout = true;
+static string remooutstat = "Remove Outline";
 
-        static bool twofourfive_target = false;
-        static string twofourfive_target_string = "Change shader compilation target to 4.5";
+static bool twofourfive_target = false;
+static string twofourfive_target_string = "Change shader compilation target to 4.5";
 
-        static bool dots_lbs_cd = false;
-        static string dots_lbs_cd_string = "DOTS|HR - Use Compute Deformation";
+static bool dots_lbs_cd = false;
+static string dots_lbs_cd_string = "DOTS|HR - Use Compute Deformation";
 
-        #endregion
+#endregion
 
         #region Material Properties Variables
 
@@ -256,7 +258,6 @@ namespace RealToon.GUIInspector
         MaterialProperty _ZWrite = null;
         MaterialProperty _N_F_DCS = null;
         MaterialProperty _N_F_NLASOBF = null;
-        MaterialProperty _N_F_RDC = null;
 
         MaterialProperty _N_F_OFLMB = null;
 
@@ -297,7 +298,6 @@ namespace RealToon.GUIInspector
             N_F_TRANSAFFSHA_ON,
             N_F_OFLMB_ON,
             N_F_ESSAO_ON,
-            N_F_RDC_ON,
             N_F_COEDGL_ON
         }
 
@@ -656,7 +656,7 @@ namespace RealToon.GUIInspector
         //No Light and Shadow On Backface [115]
         "No light and shadow will be visible on a back of a plane/flat object or face.\n\nThis will only be take effect or visible if 'Culling' is turned 'Off' or 'Front'." ,
 
-        //Change Shader Compilation Target To 2.0/4.5. [116]
+        //Change Shader Target To 2.0/4.5. [116]
         "This will change the Shader Compilation Target of the RealToon Shader file to '2.0' or '4.5'.\n\n*If the shader compilation target is changed to 4.5, the shader will support DOTS/DOTS Hybrid Renderer and Tessellation.",
 
         //Hide Directional Light Shadow [117]
@@ -739,7 +739,7 @@ namespace RealToon.GUIInspector
 
         //Use Linear Blend Skinning/Compute Deformation [143]
         "This will enable you to use 'Linear Blend Skinning' or 'Compute Deformation'.\n\nThis will modify the RealToon shader file.",
-
+        
         //Light Ignore Y Normal Direcion [144]
         "Light will ignore Object Normal Y direction.",
 
@@ -749,13 +749,10 @@ namespace RealToon.GUIInspector
         //Ambient Occlusion Color [146]
         "Ambient Occlusion color or tint.",
 
-        //Receive Decal [147]
-        "The object will Receive Decal.",
-
-        //Glow Color [148]
+        //Glow Color [147]
         "Glow edge color.",
 
-        //Glow Edge Width [149]
+        //Glow Edge Width [148]
         "The width of the glow."
 
     };
@@ -1087,8 +1084,6 @@ namespace RealToon.GUIInspector
             _N_F_ESSAO = ShaderGUI.FindProperty("_N_F_ESSAO", properties);
             _SSAOColor = ShaderGUI.FindProperty("_SSAOColor", properties);
 
-            _N_F_RDC = ShaderGUI.FindProperty("_N_F_RDC", properties);
-
             #endregion
 
             //UI
@@ -1321,8 +1316,8 @@ namespace RealToon.GUIInspector
 
                             materialEditor.ShaderProperty(_N_F_COEDGL, _N_F_COEDGL.displayName);
                             EditorGUI.BeginDisabledGroup(_N_F_COEDGL.floatValue == 0.0f);
-                                materialEditor.ShaderProperty(_Glow_Color, new GUIContent(_Glow_Color.displayName, TOTIPS[148]));
-                                materialEditor.ShaderProperty(_Glow_Edge_Width, new GUIContent(_Glow_Edge_Width.displayName, TOTIPS[149]));
+                                materialEditor.ShaderProperty(_Glow_Color, new GUIContent(_Glow_Color.displayName, TOTIPS[147]));
+                                materialEditor.ShaderProperty(_Glow_Edge_Width, new GUIContent(_Glow_Edge_Width.displayName, TOTIPS[148]));
                             EditorGUI.EndDisabledGroup();
 
                             GUILayout.Space(10);
@@ -1469,7 +1464,6 @@ namespace RealToon.GUIInspector
                                 materialEditor.ShaderProperty(_OutlineWidthControl, new GUIContent(_OutlineWidthControl.displayName, TOTIPS[28]));
 
                                 GUILayout.Space(10);
-
                                 materialEditor.ShaderProperty(_OutlineExtrudeMethod, new GUIContent(_OutlineExtrudeMethod.displayName, TOTIPS[29]));
 
                                 GUILayout.Space(10);
@@ -1730,7 +1724,6 @@ namespace RealToon.GUIInspector
                         EditorGUI.BeginDisabledGroup(_N_F_ESSAO.floatValue == 0.0f);
                             materialEditor.ShaderProperty(_SSAOColor, new GUIContent(_SSAOColor.displayName, TOTIPS[146]));
                         EditorGUI.EndDisabledGroup();
-
 
                         //Self Shadow
 
@@ -2126,7 +2119,7 @@ namespace RealToon.GUIInspector
 
                 #endregion
 
-                //Tessellation (In Progress)
+                //Tessellation (In progress)
 
                 #region Tessellation
 
@@ -2500,13 +2493,13 @@ namespace RealToon.GUIInspector
                 GUILayout.Space(10);
 
                 materialEditor.EnableInstancingField();
-                materialEditor.ShaderProperty(_N_F_RDC, new GUIContent(_N_F_RDC.displayName, TOTIPS[147]));
                 materialEditor.ShaderProperty(_N_F_OFLMB, new GUIContent(_N_F_OFLMB.displayName, TOTIPS[141]));
                 aruskw = EditorGUILayout.Toggle(new GUIContent("Automatic Remove Unused Shader Keywords (Global)", TOTIPS[121]), aruskw);
 
                 GUILayout.Space(10);
 
             }
+
 
             #region Automatic Remove UorOSKW
             if (aruskw == true)
@@ -2570,7 +2563,6 @@ namespace RealToon.GUIInspector
                 Check_RE_OL();
 
                 Debug.Log("You clicked [Refresh Settings]: RealToon on the material has been refresh and re-apply the settings properly.");
-
             }
 
             GUILayout.Space(5);
@@ -2610,7 +2602,6 @@ namespace RealToon.GUIInspector
             #endregion
 
         }
-
         //
         #region Checking
 
@@ -2983,17 +2974,6 @@ namespace RealToon.GUIInspector
                 material.DisableKeyword("N_F_DCS_ON");
                 material.SetShaderPassEnabled("ShadowCaster", true);
                 material.SetFloat("_N_F_DCS", 0.0f);
-            }
-
-            if ((material.IsKeywordEnabled("N_F_RDC_ON") || material.GetFloat("_N_F_RDC") == 1.0f))
-            {
-                material.EnableKeyword("N_F_RDC_ON");
-                material.SetFloat("_N_F_RDC", 1.0f);
-            }
-            else if ((!material.IsKeywordEnabled("N_F_RDC_ON") || material.GetFloat("_N_F_RDC") == 0.0f))
-            {
-                material.DisableKeyword("N_F_RDC_ON");
-                material.SetFloat("_N_F_RDC", 0.0f);
             }
 
             if ((material.IsKeywordEnabled("N_F_NLASOBF_ON") || material.GetFloat("_N_F_NLASOBF") == 1.0f))
@@ -3374,8 +3354,8 @@ namespace RealToon.GUIInspector
         }
 
         #endregion
-    }
 
+    }
 }
 
 #endif
