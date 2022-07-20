@@ -220,7 +220,7 @@ Material:
     - _NoisyOutlineIntensity: 0
     - _NormalMapIntensity: 1
     - _OcclusionStrength: 1
-    - _Opacity: 0.558
+    - _Opacity: 0.816
     - _Oper: 0
     - _OutlineExtrudeMethod: 0
     - _OutlineWidth: 0.001
