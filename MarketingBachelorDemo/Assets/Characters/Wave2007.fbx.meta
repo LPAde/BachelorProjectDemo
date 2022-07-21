@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d36b839e22535ff4b8cadca82d673991
+guid: 2a6635e26506ca14da5bbf5e750c5c37
 ModelImporter:
   serializedVersion: 21100
   internalIDToNameTable:
@@ -13,11 +13,6 @@ ModelImporter:
       74: -2770135929185916639
     second: Armature|Armature|Armature|Armature|mixamo.com|Layer0.001
   externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Aluminium
-    second: {fileID: 2100000, guid: 3e8e11da1ccc7e44c89ae47d90d739ec, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
