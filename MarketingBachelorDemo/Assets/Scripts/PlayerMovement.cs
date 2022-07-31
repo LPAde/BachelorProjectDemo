@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Vector3 movementVector;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private bool isAirborn;
+    [SerializeField] private GameObject model;
 
     private void Start()
     {
@@ -40,6 +41,11 @@ public class PlayerMovement : MonoBehaviour
         position = Vector3.Lerp(position, position + movementVector, speed * Time.deltaTime);
         
         transform.position = position;
+
+        if (movementVector != Vector3.zero)
+        {
+            model.transform.LookAt(transform.position + movementVector);
+        }
     }
 
     private void CheckInputs()
