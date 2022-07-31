@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     [SerializeField] private bool isAirborn;
     [SerializeField] private GameObject model;
+    [SerializeField] private Animator anim;
 
     private void Start()
     {
@@ -45,6 +46,7 @@ public class PlayerMovement : MonoBehaviour
         if (movementVector != Vector3.zero)
         {
             model.transform.LookAt(transform.position + movementVector);
+            
         }
     }
 
