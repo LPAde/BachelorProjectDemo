@@ -28,7 +28,7 @@ public class PlayerBehaviour : MonoBehaviour
     public float Attack(int attackIndex)
     {
         var attack = attacks[attackIndex];
-//        anim.SetBool(attack.animationBool, true);
+        anim.SetTrigger("Attack");
 
         for (var index = 0; index < CombatManager.Instance.Enemies.Count; index++)
         {
@@ -41,7 +41,7 @@ public class PlayerBehaviour : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
-        
+        anim.SetTrigger("Hurt");
         if(health <= 0)
             OnPlayerDeath.Invoke();
     }

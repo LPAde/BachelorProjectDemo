@@ -1034,7 +1034,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 810661737}
   m_LocalRotation: {x: 0.23226903, y: -0, z: -0, w: 0.97265166}
-  m_LocalPosition: {x: 0, y: 1.5, z: -3}
+  m_LocalPosition: {x: 0, y: 2.2, z: -2.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1912477157}
@@ -1085,15 +1085,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6c529a73a2e44c14cb578c4e6381943e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5976329
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6c529a73a2e44c14cb578c4e6381943e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.65070724
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6c529a73a2e44c14cb578c4e6381943e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.23411846
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6c529a73a2e44c14cb578c4e6381943e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2456,8 +2456,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.58636093, y: 1.7978396, z: 0.57568264}
-  m_Center: {x: 0.30445242, y: 1.0166085, z: -0.07552433}
+  m_Size: {x: 0.58636093, y: 1.8690755, z: 0.57568264}
+  m_Center: {x: 0.30445242, y: 0.9809905, z: -0.07552433}
 --- !u!4 &1912477157
 Transform:
   m_ObjectHideFlags: 0
@@ -2466,7 +2466,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1912477152}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.46, y: -3.07, z: -5.13}
+  m_LocalPosition: {x: 3.46, y: -4.03, z: -5.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 901390903}
@@ -2490,7 +2490,8 @@ MonoBehaviour:
   movementVector: {x: 0, y: 0, z: 0}
   rb: {fileID: 1912477153}
   isAirborn: 1
-  model: {fileID: 0}
+  model: {fileID: 901390904}
+  anim: {fileID: 901390905}
 --- !u!114 &1912477159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2507,7 +2508,7 @@ MonoBehaviour:
   attacks:
   - {fileID: 11400000, guid: 7e4e4d9bca9ec7448a3e8bd285432554, type: 2}
   - {fileID: 11400000, guid: 21fd94f1d2955e547b22fe7675c64b3f, type: 2}
-  anim: {fileID: 0}
+  anim: {fileID: 901390905}
 --- !u!1 &1955436087
 GameObject:
   m_ObjectHideFlags: 0

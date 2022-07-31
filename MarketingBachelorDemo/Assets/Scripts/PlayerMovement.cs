@@ -46,7 +46,11 @@ public class PlayerMovement : MonoBehaviour
         if (movementVector != Vector3.zero)
         {
             model.transform.LookAt(transform.position + movementVector);
-            
+            anim.SetBool("IsRunning", true);
+        }
+        else
+        {
+            anim.SetBool("IsRunning", false);
         }
     }
 

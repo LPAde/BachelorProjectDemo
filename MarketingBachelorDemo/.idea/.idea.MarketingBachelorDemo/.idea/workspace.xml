@@ -11,6 +11,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/tempscript.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MapItem.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -19,6 +20,8 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/MapItem.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/PlayerBehaviour.cs" />
+      <option value="$PROJECT_DIR$/Assets/tempscript.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="27U5gxj8KuyrreFgt2z8WwIIvDP" />
@@ -67,6 +70,7 @@
       <workItem from="1649361941744" duration="1675000" />
       <workItem from="1649941295633" duration="2014000" />
       <workItem from="1659194598206" duration="793000" />
+      <workItem from="1659286174318" duration="861000" />
     </task>
     <servers />
   </component>
